@@ -1,0 +1,180 @@
+/* ==========================================================
+   Que Bem Fica - folha de estilos
+   Para mudar as cores do site, altere apenas as variáveis
+   em :root. Mobile primeiro; os ajustes para ecrãs maiores
+   estão no fim do ficheiro.
+   ========================================================== */
+
+:root {
+  --verde: #2f4a3a;        /* cor principal (provisória, extrair do logótipo) */
+  --verde-escuro: #213629;
+  --rosa: #b5584b;         /* cor de destaque (provisória) */
+  --rosa-claro: #f1dcd6;
+  --creme: #faf6f0;        /* fundo */
+  --creme-2: #f3ece1;      /* fundo alternativo */
+  --texto: #2a2a26;
+  --texto-suave: #5d5d55;
+  --linha: #ddd3c4;
+  --fonte-titulo: 'Cormorant Garamond', Georgia, serif;
+  --fonte-texto: 'Jost', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+  --largura: 1120px;
+  --raio: 3px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+body {
+  margin: 0;
+  font-family: var(--fonte-texto);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--texto);
+  background: var(--creme);
+  -webkit-font-smoothing: antialiased;
+}
+img, svg, iframe { max-width: 100%; display: block; }
+a { color: inherit; }
+h1, h2, h3 { font-family: var(--fonte-titulo); color: var(--verde); line-height: 1.1; margin: 0 0 .5em; font-weight: 600; }
+h1 { font-size: clamp(2.5rem, 9vw, 4.5rem); }
+h2 { font-size: clamp(2rem, 6vw, 3rem); }
+h3 { font-size: 1.5rem; }
+p { margin: 0 0 1em; }
+
+.wrap { width: min(100% - 2.5rem, var(--largura)); margin-inline: auto; }
+section { padding: 4.5rem 0; }
+.alt { background: var(--creme-2); }
+.etiqueta { font-size: .8rem; letter-spacing: .18em; text-transform: uppercase; color: var(--rosa); margin: 0 0 .75rem; font-weight: 500; }
+.intro { max-width: 40rem; color: var(--texto-suave); }
+
+:focus-visible { outline: 3px solid var(--rosa); outline-offset: 3px; }
+.salto { position: absolute; left: -999px; top: 0; background: var(--verde); color: #fff; padding: .75rem 1rem; z-index: 100; }
+.salto:focus { left: 0; }
+
+/* Marcador para dados por confirmar. Remover a classe quando confirmado. */
+.confirmar { background: #fff3c4; color: #6b5200; font-size: .75rem; padding: .05rem .4rem; border-radius: 2px; white-space: nowrap; font-weight: 500; }
+
+/* Botões (cantos quase retos) */
+.btn {
+  display: inline-block; padding: .85rem 1.5rem; border-radius: var(--raio);
+  font-weight: 500; text-decoration: none; border: 1.5px solid var(--verde);
+  transition: background .2s, color .2s; text-align: center;
+}
+.btn-principal { background: var(--verde); color: #fff; }
+.btn-principal:hover { background: var(--verde-escuro); }
+.btn-sec { color: var(--verde); }
+.btn-sec:hover { background: var(--verde); color: #fff; }
+
+/* Cabeçalho */
+.topo { position: sticky; top: 0; z-index: 50; background: rgba(250,246,240,.96); border-bottom: 1px solid var(--linha); }
+.topo .wrap { display: flex; align-items: center; justify-content: space-between; min-height: 64px; }
+.topo img { height: 44px; width: auto; }
+.menu-btn { background: none; border: 1.5px solid var(--verde); color: var(--verde); padding: .45rem .9rem; border-radius: var(--raio); font: inherit; cursor: pointer; }
+.menu { display: none; position: absolute; left: 0; right: 0; top: 100%; background: var(--creme); border-bottom: 1px solid var(--linha); padding: .5rem 1.25rem 1rem; }
+.menu.aberto { display: block; }
+.menu a { display: block; padding: .7rem 0; text-decoration: none; border-bottom: 1px solid var(--linha); }
+.menu a:last-child { border: 0; }
+
+/* Hero */
+.hero { padding: 3rem 0 4rem; }
+.hero .wrap { display: grid; gap: 2.5rem; }
+.hero p.sub { font-size: 1.2rem; max-width: 34rem; color: var(--texto-suave); }
+.hero .acoes { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.5rem; }
+.hero-info { margin-top: 1.75rem; font-size: .95rem; color: var(--texto-suave); }
+
+/* Espaços reservados para fotos reais.
+   Para trocar: substituir o <div class="foto"> por <img src="assets/nome.jpg" alt="descrição" width="..." height="..." loading="lazy"> */
+.foto {
+  background: repeating-linear-gradient(135deg, var(--creme-2), var(--creme-2) 14px, #ece3d4 14px, #ece3d4 28px);
+  border: 1px dashed var(--linha); border-radius: var(--raio);
+  display: flex; align-items: center; justify-content: center; text-align: center;
+  color: var(--texto-suave); font-size: .85rem; padding: 1rem;
+}
+.p-4x5 { aspect-ratio: 4/5; } .p-1x1 { aspect-ratio: 1/1; } .p-3x2 { aspect-ratio: 3/2; } .p-16x9 { aspect-ratio: 16/9; }
+
+/* Sobre */
+.sobre .wrap { display: grid; gap: 2.5rem; }
+.destaques { list-style: none; padding: 0; margin: 1.5rem 0 0; display: grid; gap: .5rem; }
+.destaques li { padding-left: 1.1rem; position: relative; }
+.destaques li::before { content: ''; position: absolute; left: 0; top: .7em; width: 6px; height: 6px; background: var(--rosa); }
+
+/* Serviços */
+.cartoes { display: grid; gap: 1.25rem; margin-top: 2.5rem; padding: 0; list-style: none; }
+.cartao { background: var(--creme); border: 1px solid var(--linha); border-radius: var(--raio); padding: 1.5rem; display: flex; flex-direction: column; }
+.cartao p { color: var(--texto-suave); flex: 1; }
+.preco { font-family: var(--fonte-titulo); font-size: 1.5rem; color: var(--rosa); font-weight: 600; margin: 0; }
+.nota { margin-top: 2rem; padding: 1rem 1.25rem; border-left: 3px solid var(--rosa); background: var(--rosa-claro); max-width: 46rem; }
+
+/* Galeria */
+.galeria { display: grid; grid-template-columns: repeat(2, 1fr); gap: .75rem; margin-top: 2.5rem; }
+.galeria .largo { grid-column: span 2; }
+
+/* Testemunhos */
+.classificacao { font-family: var(--fonte-titulo); font-size: 1.4rem; color: var(--verde); }
+.testemunhos { display: grid; gap: 1.25rem; margin-top: 2rem; padding: 0; list-style: none; }
+.testemunhos blockquote { margin: 0; background: var(--creme); border: 1px solid var(--linha); border-radius: var(--raio); padding: 1.5rem; height: 100%; }
+.testemunhos blockquote p { font-family: var(--fonte-titulo); font-size: 1.3rem; line-height: 1.4; color: var(--verde); }
+.testemunhos footer { font-size: .9rem; color: var(--texto-suave); }
+
+/* Horário e localização */
+.local .wrap { display: grid; gap: 2rem; }
+.horario { width: 100%; max-width: 26rem; border-collapse: collapse; margin: 1rem 0 1.5rem; }
+.horario th, .horario td { text-align: left; padding: .6rem 0; border-bottom: 1px solid var(--linha); font-weight: 400; }
+.horario td { text-align: right; }
+.mapa iframe { width: 100%; height: 340px; border: 0; border-radius: var(--raio); }
+
+/* Contactos */
+.contactos .wrap { display: grid; gap: 2rem; }
+.lista-contacto { list-style: none; padding: 0; margin: 0; }
+.lista-contacto li { padding: .85rem 0; border-bottom: 1px solid var(--linha); display: flex; flex-wrap: wrap; gap: .25rem 1rem; }
+.lista-contacto span.k { min-width: 7rem; color: var(--texto-suave); }
+
+/* Rodapé */
+.rodape { background: var(--verde-escuro); color: #e8e2d6; padding: 3rem 0 6rem; font-size: .95rem; }
+.rodape img { height: 48px; width: auto; margin-bottom: 1rem; }
+.rodape .wrap { display: grid; gap: 2rem; }
+.rodape a { color: #fff; }
+.rodape ul { list-style: none; padding: 0; margin: 0; }
+.rodape li { margin-bottom: .4rem; }
+.rodape h2 { color: #fff; font-size: 1.2rem; font-family: var(--fonte-texto); font-weight: 500; letter-spacing: .05em; }
+.rodape .legal { border-top: 1px solid rgba(255,255,255,.2); padding-top: 1.5rem; margin-top: 1rem; font-size: .85rem; }
+
+/* Botão flutuante de WhatsApp */
+.whatsapp {
+  position: fixed; right: 1rem; bottom: 1rem; z-index: 60;
+  background: #1f7a4d; color: #fff; text-decoration: none; font-weight: 500;
+  padding: .85rem 1.15rem; border-radius: var(--raio); box-shadow: 0 2px 10px rgba(0,0,0,.25);
+}
+.whatsapp:hover { background: #17613c; }
+
+/* Entrada suave ao fazer scroll (apenas fade, uma só animação no site) */
+.revelar { opacity: 0; transform: translateY(12px); transition: opacity .6s ease, transform .6s ease; }
+.revelar.visivel { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .revelar { opacity: 1; transform: none; transition: none; }
+}
+
+/* Páginas legais */
+.legal-pagina { padding: 3rem 0 5rem; }
+.legal-pagina .wrap { max-width: 46rem; }
+.legal-pagina h2 { font-size: 1.7rem; margin-top: 2rem; }
+
+/* ---------- Ecrãs maiores ---------- */
+@media (min-width: 768px) {
+  .menu-btn { display: none; }
+  .menu { display: flex; position: static; background: none; border: 0; padding: 0; gap: 1.75rem; }
+  .menu a { border: 0; padding: 0; font-size: .95rem; }
+  .menu a:hover { color: var(--rosa); }
+  .hero .wrap { grid-template-columns: 1.1fr .9fr; align-items: center; }
+  .sobre .wrap, .local .wrap, .contactos .wrap { grid-template-columns: 1fr 1fr; align-items: start; gap: 4rem; }
+  .cartoes { grid-template-columns: repeat(2, 1fr); }
+  .galeria { grid-template-columns: repeat(3, 1fr); }
+  .galeria .largo { grid-column: span 2; }
+  .testemunhos { grid-template-columns: repeat(2, 1fr); }
+  .rodape .wrap { grid-template-columns: 1.4fr 1fr 1fr; }
+  .rodape { padding-bottom: 4rem; }
+}
+@media (min-width: 1024px) {
+  .cartoes { grid-template-columns: repeat(4, 1fr); }
+  section { padding: 6rem 0; }
+}
